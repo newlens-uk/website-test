@@ -250,6 +250,23 @@
                         </div>
                     </div>
 
+                    <!-- Step 5b: Policy Quality (conditional, shown only if Q4 = Yes) -->
+                    <div class="step" id="step5b" style="display:none;">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">How would you describe your AI Usage Policy?</h2>
+                        <div class="space-y-2">
+                            <label class="radio-card block"><input type="radio" name="q4b_policy_quality" value="documented-accessible" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Documented, accessible to all staff, and reviewed regularly</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q4b_policy_quality" value="exists-not-communicated" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Exists but not widely communicated or recently reviewed</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q4b_policy_quality" value="basic-not-enforced" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">A basic document, not actively enforced</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-8">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
                     <!-- Step 6: Data Quality -->
                     <div class="step" id="step6">
                         <h2 class="text-3xl font-black text-nl-navy mb-8">Is your data clean, centralised, and structured?</h2>
@@ -398,6 +415,21 @@
                             <p class="text-sm leading-relaxed text-nl-slate">We use these insights to generate your Readiness Score and Risk Profile. Your roadmap is calculated based on these 12 pillars.</p>
                         </div>
 
+                        <!-- Consent Section -->
+                        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 my-8">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" name="consent_followup" value="yes" class="mt-1 mr-3 w-5 h-5 rounded border-slate-300 text-nl-teal focus:ring-nl-teal">
+                                <span class="text-sm text-slate-700 leading-relaxed">
+                                    Send me my report by email, and a brief follow-up in 3 working days with the option to book a call to discuss my results.
+                                </span>
+                            </label>
+                            <div class="mt-4 pt-4 border-t border-slate-200">
+                                <p class="text-xs text-slate-500 leading-relaxed">
+                                    We use your details to deliver your report. If you tick the box above, we will contact you once more after 3 working days. We will not pass your details to third parties. <a href="/privacy.html" class="text-nl-teal underline hover:text-nl-navy">Read our privacy policy</a>.
+                                </p>
+                            </div>
+                        </div>
+
                         <div class="flex gap-4">
                             <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
                             <button type="submit" class="flex-[2] bg-nl-green text-nl-navy px-10 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(56,217,138,0.4)] transition-all">Get My Report →</button>
@@ -427,8 +459,8 @@
         document.getElementById('totalSteps').textContent = totalSteps;
 
         function nextStep() {
-            const currentStepEl = document.getElementById(`step${currentStep}`);
-            const requiredInputs = currentStepEl.querySelectorAll('input[required], select[required]');
+            const currentStepEl = document.getElementById(`step${currentStep}${currentStep === 5 ? '' : ''}`);
+            const requiredInputs = currentStepEl ? currentStepEl.querySelectorAll('input[required], select[required]') : [];
             let isValid = true;
 
             requiredInputs.forEach(input => {
@@ -456,30 +488,81 @@
                 return;
             }
 
+            // Hide current step
+            if (currentStepEl) currentStepEl.classList.remove('active');
+            
+            // Special handling for Q4b conditional
+            if (currentStep === 5) {
+                const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
+                if (q4Answer && q4Answer.value === 'yes') {
+                    // Show Q4b
+                    document.getElementById('step5b').style.display = 'block';
+                    document.getElementById('step5b').classList.add('active');
+                    updateProgress();
+                    scrollToForm();
+                    return; // Don't increment currentStep
+                }
+            } else if (document.getElementById('step5b') && document.getElementById('step5b').classList.contains('active')) {
+                // We're on Q4b, validate it
+                const q4bAnswer = document.querySelector('input[name="q4b_policy_quality"]:checked');
+                if (!q4bAnswer) {
+                    alert('Please answer the required question to continue.');
+                    document.getElementById('step5b').classList.add('active');
+                    return;
+                }
+                // Hide Q4b and continue to step 6
+                document.getElementById('step5b').classList.remove('active');
+                document.getElementById('step5b').style.display = 'none';
+            }
+
             if (currentStep < totalSteps) {
-                document.getElementById(`step${currentStep}`).classList.remove('active');
                 currentStep++;
                 document.getElementById(`step${currentStep}`).classList.add('active');
                 updateProgress();
-                // Scroll to the form card instead of page top
-                const formCard = document.querySelector('.bg-white.rounded-3xl');
-                if (formCard) {
-                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                scrollToForm();
+            }
+        }
+        
+        function scrollToForm() {
+            const formCard = document.querySelector('.bg-white.rounded-3xl');
+            if (formCard) {
+                formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
         function prevStep() {
+            // Check if we're on Q4b
+            const onQ4b = document.getElementById('step5b') && document.getElementById('step5b').classList.contains('active');
+            
+            if (onQ4b) {
+                // Going back from Q4b to step 5
+                document.getElementById('step5b').classList.remove('active');
+                document.getElementById('step5b').style.display = 'none';
+                document.getElementById('step5').classList.add('active');
+                scrollToForm();
+                return;
+            }
+            
             if (currentStep > 1) {
                 document.getElementById(`step${currentStep}`).classList.remove('active');
                 currentStep--;
+                
+                // Special handling when going back to step 5 from step 6
+                if (currentStep === 5) {
+                    const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
+                    if (q4Answer && q4Answer.value === 'yes') {
+                        // Show Q4b instead of step 5
+                        document.getElementById('step5b').style.display = 'block';
+                        document.getElementById('step5b').classList.add('active');
+                        updateProgress();
+                        scrollToForm();
+                        return;
+                    }
+                }
+                
                 document.getElementById(`step${currentStep}`).classList.add('active');
                 updateProgress();
-                // Scroll to the form card instead of page top
-                const formCard = document.querySelector('.bg-white.rounded-3xl');
-                if (formCard) {
-                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                scrollToForm();
             }
         }
 
@@ -534,6 +617,18 @@
             });
             if (dataIssues.length > 0) {
                 data.q6_data_issues = dataIssues.join(',');
+            }
+            
+            // Handle consent (GDPR compliance)
+            const consentCheckbox = document.querySelector('input[name="consent_followup"]');
+            data.consent_status = consentCheckbox && consentCheckbox.checked;
+            data.consent_timestamp = new Date().toISOString();
+            data.consent_wording_version = '2026-02-18-v1';
+            
+            // Handle Q4b (only present if Q4 = Yes)
+            const q4bAnswer = document.querySelector('input[name="q4b_policy_quality"]:checked');
+            if (q4bAnswer) {
+                data.q4b_policy_quality = q4bAnswer.value;
             }
             
             data.timestamp = new Date().toISOString();
