@@ -50,10 +50,21 @@
             transition: width 0.3s ease;
         }
         .radio-card {
-            @apply border-2 border-slate-200 rounded-xl p-4 cursor-pointer transition-all hover:border-nl-teal hover:bg-nl-teal/5 relative;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .radio-card:hover {
+            border-color: #39C6D6;
+            background-color: rgba(57, 198, 214, 0.05);
         }
         .radio-card.selected {
-            @apply border-4 border-nl-teal bg-nl-teal/20 shadow-lg;
+            border: 4px solid #39C6D6 !important;
+            background-color: rgba(57, 198, 214, 0.15) !important;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .sr-only {
             position: absolute;
