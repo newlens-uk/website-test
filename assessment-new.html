@@ -459,7 +459,29 @@
         document.getElementById('totalSteps').textContent = totalSteps;
 
         function nextStep() {
-            const currentStepEl = document.getElementById(`step${currentStep}${currentStep === 5 ? '' : ''}`);
+            // Check if we're on Q4b (conditional question)
+            const onQ4b = document.getElementById('step5b') && 
+                         document.getElementById('step5b').classList.contains('active');
+            
+            if (onQ4b) {
+                // Validate Q4b
+                const q4bAnswer = document.querySelector('input[name="q4b_policy_quality"]:checked');
+                if (!q4bAnswer) {
+                    alert('Please answer the required question to continue.');
+                    return;
+                }
+                // Hide Q4b and advance to step 6
+                document.getElementById('step5b').classList.remove('active');
+                document.getElementById('step5b').style.display = 'none';
+                currentStep = 6;
+                document.getElementById('step6').classList.add('active');
+                updateProgress();
+                scrollToForm();
+                return;
+            }
+            
+            // Normal step validation
+            const currentStepEl = document.getElementById(`step${currentStep}`);
             const requiredInputs = currentStepEl ? currentStepEl.querySelectorAll('input[required], select[required]') : [];
             let isValid = true;
 
@@ -491,7 +513,7 @@
             // Hide current step
             if (currentStepEl) currentStepEl.classList.remove('active');
             
-            // Special handling for Q4b conditional
+            // Special handling for Q4: show Q4b if answer is "yes"
             if (currentStep === 5) {
                 const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
                 if (q4Answer && q4Answer.value === 'yes') {
@@ -502,17 +524,6 @@
                     scrollToForm();
                     return; // Don't increment currentStep
                 }
-            } else if (document.getElementById('step5b') && document.getElementById('step5b').classList.contains('active')) {
-                // We're on Q4b, validate it
-                const q4bAnswer = document.querySelector('input[name="q4b_policy_quality"]:checked');
-                if (!q4bAnswer) {
-                    alert('Please answer the required question to continue.');
-                    document.getElementById('step5b').classList.add('active');
-                    return;
-                }
-                // Hide Q4b and continue to step 6
-                document.getElementById('step5b').classList.remove('active');
-                document.getElementById('step5b').style.display = 'none';
             }
 
             if (currentStep < totalSteps) {
