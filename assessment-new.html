@@ -49,7 +49,7 @@
         .progress-bar {
             transition: width 0.3s ease;
         }
-        .radio-card {
+        .radio-card, .checkbox-card {
             border: 2px solid #e2e8f0;
             border-radius: 0.5rem;
             padding: 0.5rem 0.75rem;
@@ -57,11 +57,11 @@
             transition: all 0.2s;
             position: relative;
         }
-        .radio-card:hover {
+        .radio-card:hover, .checkbox-card:hover {
             border-color: #39C6D6;
             background-color: rgba(57, 198, 214, 0.05);
         }
-        .radio-card.selected {
+        .radio-card.selected, .checkbox-card.selected {
             border: 4px solid #39C6D6 !important;
             background-color: rgba(57, 198, 214, 0.15) !important;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -270,13 +270,16 @@
                     <!-- Step 7: Data Issues -->
                     <div class="step" id="step7">
                         <h2 class="text-3xl font-black text-nl-navy mb-8">What are your biggest issues with data today?</h2>
+                        <p class="text-slate-600 mb-6 text-sm">(Select all that apply)</p>
                         <div class="space-y-2">
-                            <label class="radio-card block"><input type="radio" name="q6_data_issues" value="no-single-truth" class="sr-only" required>
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="no-single-truth" class="sr-only">
                                 <div><p class="text-sm font-semibold text-nl-navy text-center">Conflicting data across different systems</p></div></label>
-                            <label class="radio-card block"><input type="radio" name="q6_data_issues" value="multiple-systems" class="sr-only">
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="multiple-systems" class="sr-only">
                                 <div><p class="text-sm font-semibold text-nl-navy text-center">Multiple systems with re-keying</p></div></label>
-                            <label class="radio-card block"><input type="radio" name="q6_data_issues" value="more-value-potential" class="sr-only">
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="more-value-potential" class="sr-only">
                                 <div><p class="text-sm font-semibold text-nl-navy text-center">We could be getting more value from our data</p></div></label>
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="no-issues" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No significant data issues</p></div></label>
                         </div>
                         <div class="flex gap-4 mt-8">
                             <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
@@ -439,6 +442,14 @@
                     input.classList.remove('border-red-300');
                 }
             });
+            
+            // Special validation for Step 7 (checkboxes)
+            if (currentStep === 7) {
+                const hasChecked = currentStepEl.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+                if (!hasChecked) {
+                    isValid = false;
+                }
+            }
 
             if (!isValid) {
                 alert('Please answer the required questions to continue.');
@@ -494,6 +505,18 @@
             });
         });
 
+        // Checkbox visual feedback
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const card = this.closest('.checkbox-card');
+                if (this.checked) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        });
+
         // Form Submission
         document.getElementById('assessmentForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -503,6 +526,16 @@
 
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
+            
+            // Handle checkboxes (collect all checked values for q6_data_issues)
+            const dataIssues = [];
+            document.querySelectorAll('input[name="q6_data_issues"]:checked').forEach(cb => {
+                dataIssues.push(cb.value);
+            });
+            if (dataIssues.length > 0) {
+                data.q6_data_issues = dataIssues.join(',');
+            }
+            
             data.timestamp = new Date().toISOString();
 
             try {
