@@ -586,7 +586,16 @@
         function scrollToForm() {
             const formCard = document.querySelector('.bg-white.rounded-xl');
             if (formCard) {
-                formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const offset = 100; // Offset in pixels to account for fixed header and progress bar
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = formCard.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
         }
 
