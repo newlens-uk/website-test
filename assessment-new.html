@@ -132,3 +132,778 @@
     <section class="py-16 md:py-24">
         <div class="max-w-4xl mx-auto px-6">
             
+            
+
+            <div class="bg-white rounded-xl shadow-2xl p-8 md:p-16 border border-slate-100">
+                
+                <form id="assessmentForm" action="https://n8n.newlens.uk/webhook/assessment-submit" method="POST" class="w-full">
+                    
+                    <!-- Step 1: Contact Info -->
+                    <div class="step active" id="step1">
+                        <h2 class="text-3xl font-black text-nl-navy mb-3">The Basics</h2>
+                        <p class="text-slate-600 mb-12">Where should we send your strategic report?</p>
+                        
+                        <div class="max-w-2xl mx-auto">
+                            <div class="form-row">
+                                <label for="name" class="form-label">Full Name <span class="required-star">*</span></label>
+                                <input type="text" id="name" name="name" required class="form-input" placeholder="e.g. John Smith">
+                            </div>
+                            <div class="form-row">
+                                <label for="email" class="form-label">Work Email <span class="required-star">*</span></label>
+                                <input type="email" id="email" name="email" required class="form-input" placeholder="e.g. john@company.com">
+                            </div>
+                            <div class="form-row">
+                                <label for="company" class="form-label">Company Name <span class="required-star">*</span></label>
+                                <input type="text" id="company" name="company" required class="form-input" placeholder="Your Business Ltd">
+                            </div>
+                            <div class="form-row">
+                                <label for="role" class="form-label">Your Role <span class="required-star">*</span></label>
+                                <select id="role" name="role" required class="form-select">
+                                    <option value="">Select...</option>
+                                    <option value="owner">Owner/Founder</option>
+                                    <option value="director">Director/C-Level</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="operations">Operations</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="flex justify-center mt-12">
+                                <button type="button" onclick="nextStep()" class="w-full md:w-auto md:min-w-[300px] bg-nl-green text-nl-navy h-[64px] px-12 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all shadow-lg flex items-center justify-center gap-3">
+                                    Begin Discovery →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2-12: The questions keep their radio-card layout as they don't have labels-to-the-left in the same way -->
+                    <!-- Step 2: Team Size -->
+                    <div class="step" id="step2">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">How many employees does your business have?</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="1-5" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">1 - 5</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="6-10" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">6 - 10</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="11-20" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">11 - 20</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="21-50" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">21 - 50</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="51-100" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">51 - 100</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="101-250" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">101 - 250</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q1_employees" value="250+" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">250+ (Enterprise)</p></div>
+                            </label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Leadership -->
+                    <div class="step" id="step3">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Is AI adoption being championed by your leadership team?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block">
+                                <input type="radio" name="q2_leadership" value="yes" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q2_leadership" value="working-on-it" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">In progress</p></div>
+                            </label>
+                            <label class="radio-card block">
+                                <input type="radio" name="q2_leadership" value="no" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No</p></div>
+                            </label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Strategy -->
+                    <div class="step" id="step4">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Do you have a documented AI Strategy?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q3_strategy" value="yes" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q3_strategy" value="working-on-it" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">In progress</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q3_strategy" value="no" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Policy -->
+                    <div class="step" id="step5">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Do you have a documented AI Usage Policy?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q4_policy" value="yes" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q4_policy" value="working-on-it" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">In progress</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q4_policy" value="no" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5b: Policy Quality (conditional, shown only if Q4 = Yes) -->
+                    <div class="step" id="step5b" style="display:none;">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">How would you describe your AI Usage Policy?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q4b_policy_quality" value="documented-accessible" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Documented, accessible to all staff, and reviewed regularly</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q4b_policy_quality" value="exists-not-communicated" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Exists but not widely communicated or recently reviewed</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q4b_policy_quality" value="basic-not-enforced" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">A basic document, not actively enforced</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 6: Data Quality -->
+                    <div class="step" id="step6">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Is your data clean, centralised, and structured?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q5_data_clean" value="yes" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q5_data_clean" value="not-sure" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Not sure</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q5_data_clean" value="no" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 7: Data Issues -->
+                    <div class="step" id="step7">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">What are your biggest issues with data today?</h2>
+                        <p class="text-slate-600 mb-6 text-sm">(Select all that apply)</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="no-single-truth" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Conflicting data across different systems</p></div></label>
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="multiple-systems" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Multiple systems with re-keying</p></div></label>
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="more-value-potential" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">We could be getting more value from our data</p></div></label>
+                            <label class="checkbox-card block"><input type="checkbox" name="q6_data_issues" value="no-issues" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No significant data issues</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 8: Current Usage -->
+                    <div class="step" id="step8">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Are you currently utilising AI tools in your operations?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q7_usage" value="yes-majority" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes - most of our team use AI tools</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q7_usage" value="yes-minority" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes - some of our team use AI tools</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q7_usage" value="exploring" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Not yet - but we're exploring</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q7_usage" value="no" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 9: AI Skills -->
+                    <div class="step" id="step9">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Do you have AI-skilled employees or external support?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q8_skills" value="inhouse" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes - we have in-house expert</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q8_skills" value="external" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes - we have an external expert</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q8_skills" value="developing" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Not yet - but we're building capability</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q8_skills" value="none" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No - no access to AI expertise</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 10: Encouragement -->
+                    <div class="step" id="step10">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Are employees encouraged to use AI tools?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q9_encouragement" value="active" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes - actively encouraged</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q9_encouragement" value="informal" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Informally - but not structured</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q9_encouragement" value="none" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No - not yet</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 11: Training -->
+                    <div class="step" id="step11">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">Have employees received formal AI training?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q10_training" value="yes" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Yes - AI training completed</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q10_training" value="planned" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Not yet - training is planned</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q10_training" value="no" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">No - not yet</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Next →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 12: Readiness -->
+                    <div class="step" id="step12">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">How would you describe your team's AI Readiness?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q11_readiness" value="ready" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Ready - mindset and skills in place</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q11_readiness" value="steps-taken" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Developing - interest and willingness present</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q11_readiness" value="not-ready" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Early stages - capability needs development</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-1 bg-nl-green text-nl-navy h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all">Final Step →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 13: Admin Tax (Closing Hook) -->
+                    <div class="step" id="step13">
+                        <h2 class="text-3xl font-black text-nl-navy mb-3">One last question</h2>
+                        <p class="text-slate-600 mb-12">Estimated monthly spend on manual administration/data processing?</p>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q12_admin_spend" value="<500" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">&lt; £500</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q12_admin_spend" value="500-2k" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">£500 - £2k</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q12_admin_spend" value="2k-10k" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">£2k - £10k</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q12_admin_spend" value="10k+" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">£10k+</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q12_admin_spend" value="unsure" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">I'm unsure / Not tracked</p></div></label>
+                        </div>
+
+                        <div class="bg-nl-navy p-8 rounded-2xl text-white my-12">
+                            <p class="text-xs font-bold uppercase tracking-widest text-nl-green mb-2">Strategic Insight</p>
+                            <p class="text-sm leading-relaxed text-nl-slate">We use these insights to generate your Readiness Score and Risk Profile. Your roadmap is calculated from your answers across these assessment pillars.</p>
+                        </div>
+
+                        <!-- Consent Section -->
+                        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 my-12">
+                            <label class="flex items-start cursor-pointer">
+                                <input type="checkbox" name="consent_followup" value="yes" class="mt-1 mr-3 w-5 h-5 rounded border-slate-300 text-nl-teal focus:ring-nl-teal">
+                                <span class="text-sm text-slate-700 leading-relaxed">
+                                    Send me my report by email, and a brief follow-up in 3 working days with the option to book a call to discuss my results.
+                                </span>
+                            </label>
+                            <div class="mt-4 pt-4 border-t border-slate-200">
+                                <p class="text-xs text-slate-500 leading-relaxed">
+                                    We use your details to deliver your report. If you tick the box above, we will contact you once more after 3 working days. We will not pass your details to third parties. <a href="/privacy.html" class="text-nl-teal underline hover:text-nl-navy">Read our privacy policy</a>. GDPR compliant.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Submission Error Message (hidden by default) -->
+                        <div id="submission-error" class="hidden mt-4 p-4 rounded-lg border border-red-300 bg-red-50 text-red-800 text-sm">
+                            Something went wrong submitting your assessment. Please try again, or email us directly at <a href="mailto:info@newlens.uk" class="underline">info@newlens.uk</a>.
+                        </div>
+
+                        <div class="flex gap-4 mt-4">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="submit" class="flex-[2] bg-nl-green text-nl-navy h-[64px] rounded-xl font-black text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(56,217,138,0.4)] transition-all">Get My Report →</button>
+                        </div>
+                    </div>
+
+                    <!-- Success State (hidden) -->
+                    <div id="successMessage" class="hidden text-center py-12">
+                        <div class="w-20 h-20 bg-nl-green/10 rounded-full flex items-center justify-center mx-auto mb-6 text-nl-green">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                        <h2 class="text-4xl font-black text-nl-navy mb-4">Your Report is Being Generated</h2>
+                        <p class="text-xl text-slate-600 mb-4">You should receive it within a few minutes-keep an eye on your inbox.</p>
+                        <div class="bg-nl-green/10 border-2 border-nl-green/30 rounded-2xl p-6 mb-6 max-w-2xl mx-auto">
+                            <div class="flex items-start gap-3">
+                                <svg class="w-6 h-6 text-nl-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                                </svg>
+                                <div class="text-left">
+                                    <p class="font-bold text-nl-navy mb-1">This is workflow automation in action.</p>
+                                    <p class="text-sm text-slate-700 leading-relaxed">Your report is being generated automatically using the same kind of intelligent workflows newlens builds for clients. No manual processing, no delays-just instant, personalised insights delivered at scale.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 mb-8">Check your spam folder if you don't see it right away.</p>
+                        <a href="index.html" class="inline-block bg-nl-navy text-white px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest">Back to Site</a>
+                    </div>
+
+                
+                    <!-- Progress Bar (Moved to Bottom) -->
+                    <div id="progressContainer" class="mt-12 pt-8 border-t border-slate-100">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-[10px] font-black uppercase tracking-widest text-slate-400">Step <span id="currentStep">1</span> of <span id="totalSteps">13</span></span>
+                            <span class="text-[10px] font-black text-nl-teal"><span id="progressPercent">0</span>%</span>
+                        </div>
+                        <div class="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden">
+                            <div id="progressBar" class="progress-bar bg-nl-teal h-1.5 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+    
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 13;
+        
+        document.getElementById('totalSteps').textContent = totalSteps;
+
+        function nextStep() {
+            // Check if we're on Q4b (conditional question)
+            const onQ4b = document.getElementById('step5b') && 
+                         document.getElementById('step5b').classList.contains('active');
+            
+            if (onQ4b) {
+                // Validate Q4b
+                const q4bAnswer = document.querySelector('input[name="q4b_policy_quality"]:checked');
+                if (!q4bAnswer) {
+                    alert('Please answer the required question to continue.');
+                    return;
+                }
+                // Hide Q4b and advance to step 6
+                document.getElementById('step5b').classList.remove('active');
+                document.getElementById('step5b').style.display = 'none';
+                currentStep = 6;
+                document.getElementById('step6').classList.add('active');
+                updateProgress();
+                scrollToForm();
+                return;
+            }
+            
+            // Normal step validation
+            const currentStepEl = document.getElementById(`step${currentStep}`);
+            const requiredInputs = currentStepEl ? currentStepEl.querySelectorAll('input[required], select[required]') : [];
+            let isValid = true;
+
+            requiredInputs.forEach(input => {
+                if (input.type === 'radio') {
+                    const isChecked = Array.from(currentStepEl.querySelectorAll(`input[name="${input.name}"]`)).some(r => r.checked);
+                    if (!isChecked) isValid = false;
+                } else if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('border-red-300');
+                } else {
+                    input.classList.remove('border-red-300');
+                }
+            });
+            
+            // Special validation for Step 7 (checkboxes)
+            if (currentStep === 7) {
+                const hasChecked = currentStepEl.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+                if (!hasChecked) {
+                    isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                alert('Please answer the required questions to continue.');
+                return;
+            }
+
+            // Hide current step
+            if (currentStepEl) currentStepEl.classList.remove('active');
+            
+            // Special handling for Q4: show Q4b if answer is "yes"
+            if (currentStep === 5) {
+                const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
+                if (q4Answer && q4Answer.value === 'yes') {
+                    // Show Q4b
+                    document.getElementById('step5b').style.display = 'block';
+                    document.getElementById('step5b').classList.add('active');
+                    updateProgress();
+                    scrollToForm();
+                    return; // Don't increment currentStep
+                }
+            }
+
+            if (currentStep < totalSteps) {
+                currentStep++;
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+                scrollToForm();
+            }
+        }
+        
+        function scrollToForm() {
+            const formCard = document.querySelector('.bg-white.rounded-xl');
+            if (formCard) {
+                formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        });
+            }
+        }
+
+        function prevStep() {
+            // Check if we're on Q4b
+            const onQ4b = document.getElementById('step5b') && document.getElementById('step5b').classList.contains('active');
+            
+            if (onQ4b) {
+                // Going back from Q4b to step 5
+                document.getElementById('step5b').classList.remove('active');
+                document.getElementById('step5b').style.display = 'none';
+                document.getElementById('step5').classList.add('active');
+                scrollToForm();
+                return;
+            }
+            
+            if (currentStep > 1) {
+                document.getElementById(`step${currentStep}`).classList.remove('active');
+                currentStep--;
+                
+                // Special handling when going back to step 5 from step 6
+                if (currentStep === 5) {
+                    const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
+                    if (q4Answer && q4Answer.value === 'yes') {
+                        // Show Q4b instead of step 5
+                        document.getElementById('step5b').style.display = 'block';
+                        document.getElementById('step5b').classList.add('active');
+                        updateProgress();
+                        scrollToForm();
+                        return;
+                    }
+                }
+                
+                document.getElementById(`step${currentStep}`).classList.add('active');
+                updateProgress();
+                scrollToForm();
+            }
+        }
+
+        function updateProgress() {
+            const percent = Math.round(((currentStep - 1) / (totalSteps - 1)) * 100);
+            document.getElementById('currentStep').textContent = currentStep;
+            document.getElementById('progressPercent').textContent = percent;
+            document.getElementById('progressBar').style.width = `${percent}%`;
+        }
+
+        // Radio visual feedback
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const groupName = this.name;
+                document.querySelectorAll(`input[name="${groupName}"]`).forEach(r => {
+                    const card = r.closest('.radio-card');
+                    if (r.checked) {
+                        card.classList.add('selected');
+                    } else {
+                        card.classList.remove('selected');
+                    }
+                });
+            });
+        });
+
+        // Checkbox visual feedback
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const card = this.closest('.checkbox-card');
+                if (this.checked) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        });
+
+        // Form Submission
+        document.getElementById('assessmentForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Processing Report...</span>';
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Handle checkboxes (collect all checked values for q6_data_issues)
+            const dataIssues = [];
+            document.querySelectorAll('input[name="q6_data_issues"]:checked').forEach(cb => {
+                dataIssues.push(cb.value);
+            });
+            if (dataIssues.length > 0) {
+                data.q6_data_issues = dataIssues.join(',');
+            }
+            
+            // Handle consent (GDPR compliance)
+            const consentCheckbox = document.querySelector('input[name="consent_followup"]');
+            data.consent_status = consentCheckbox && consentCheckbox.checked;
+            data.consent_timestamp = new Date().toISOString();
+            data.consent_wording_version = '2026-02-18-v1';
+            
+            // Handle Q4b (only present if Q4 = Yes)
+            const q4bAnswer = document.querySelector('input[name="q4b_policy_quality"]:checked');
+            if (q4bAnswer) {
+                data.q4b_policy_quality = q4bAnswer.value;
+            }
+            
+            data.timestamp = new Date().toISOString();
+
+            try {
+                const response = await fetch('https://n8n.newlens.uk/webhook/assessment-submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) throw new Error('Submission failed');
+                
+                document.getElementById(`step${totalSteps}`).classList.remove('active');
+                document.getElementById('progressContainer').classList.add('hidden');
+                document.getElementById('successMessage').classList.remove('hidden');
+                // Scroll to the form card to show success message
+                const formCard = document.querySelector('.bg-white.rounded-xl');
+                if (formCard) {
+                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } catch (error) {
+                console.error('Submission error:', error);
+                document.getElementById('submission-error').classList.remove('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Get My Report →';
+            }
+        });
+    </script>
+<!-- Cookie Consent Banner -->
+<!-- Include cookie-banner.html content inline for now -->
+<!-- TODO: Convert to server-side include when available -->
+    <!-- Cookie Consent Banner -->
+    <!-- Cookie Consent Banner - UK GDPR Compliant -->
+    <style>
+        #cookie-banner {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #050B15;
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            z-index: 9999;
+            border-top: 2px solid #38D98A;
+        }
+        #cookie-banner.show {
+            display: block;
+        }
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .cookie-text p {
+            margin: 0 0 0.5rem 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .cookie-text a {
+            color: #39C6D6;
+            text-decoration: underline;
+        }
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+        .cookie-btn-accept {
+            background: #38D98A;
+            color: #050B15;
+        }
+        .cookie-btn-accept:hover {
+            background: #2ec57a;
+        }
+        .cookie-btn-reject {
+            background: transparent;
+            color: white;
+            border: 2px solid #BFC9D1;
+        }
+        .cookie-btn-reject:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        @media (max-width: 768px) {
+            .cookie-content {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .cookie-buttons {
+                width: 100%;
+            }
+            .cookie-btn {
+                flex: 1;
+            }
+        }
+    </style>
+    
+    <div id="cookie-banner">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p><strong>We use cookies to improve your experience</strong></p>
+                <p>We use essential cookies to make our site work. With your consent, we may also use non-essential cookies to improve user experience and analyse website traffic. By clicking "Accept," you agree to our website's cookie use as described in our <a href="privacy.html" target="_blank">Cookie Policy</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-reject" onclick="rejectCookies()">Reject</button>
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()">Accept</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    // Check if user has already made a choice
+    function checkCookieConsent() {
+        const consent = localStorage.getItem('cookie-consent');
+        if (!consent) {
+            // No choice made yet, show banner
+            document.getElementById('cookie-banner').classList.add('show');
+        } else if (consent === 'accepted') {
+            // Load analytics/tracking scripts here when implemented
+            loadAnalytics();
+        }
+    }
+    
+    function acceptCookies() {
+        localStorage.setItem('cookie-consent', 'accepted');
+        document.getElementById('cookie-banner').classList.remove('show');
+        loadAnalytics();
+    }
+    
+    function rejectCookies() {
+        localStorage.setItem('cookie-consent', 'rejected');
+        document.getElementById('cookie-banner').classList.remove('show');
+        // Don't load analytics
+    }
+    
+    function loadAnalytics() {
+        // Placeholder for Google Analytics or other tracking
+        // Only loads if user has accepted cookies
+        // Add your GA4 code here when ready:
+        // Example:
+        // (function(i,s,o,g,r,a,m){...})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        console.log('Analytics would load here (user accepted cookies)');
+    }
+    
+    // Show banner on page load if no consent recorded
+    document.addEventListener('DOMContentLoaded', checkCookieConsent);
+    </script>
+<footer class="bg-nl-navy text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-2xl font-black text-white mb-6 tracking-tighter">new<span class="text-nl-green">lens</span></div>
+                    <p class="text-nl-slate text-sm leading-relaxed mb-4">Enterprise-grade automation and data clarity for UK SMEs. Based in Suffolk.</p>
+                    <p class="text-nl-green text-xs font-semibold italic">Your journey from friction to flow.</p>
+                    <p class="text-nl-teal text-xs font-bold">Co No. 16945634 | ICO: TBC</p>
+                    <p class="text-nl-slate text-xs opacity-60 italic mt-1">Registered in England & Wales</p>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Platform</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="assessment-new.html" class="text-nl-slate hover:text-white transition-colors">AI Readiness Assessment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="about.html" class="text-nl-slate hover:text-white transition-colors">About</a></li>
+                        <li><a href="services.html" class="text-nl-slate hover:text-white transition-colors">Services</a></li>
+                        <li><a href="articles/index.html" class="text-nl-slate hover:text-white transition-colors">Articles</a></li>
+                        <li><a href="qanda.html" class="text-nl-slate hover:text-white transition-colors">Q&A</a></li>
+                        <li><a href="contact.html" class="text-nl-slate hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Connect</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="mailto:info@newlens.uk" class="text-nl-slate hover:text-white transition-colors">info@newlens.uk</a></li>
+                        <li><a href="https://www.linkedin.com/company/newlens-uk" target="_blank" class="text-nl-slate hover:text-white transition-colors">LinkedIn</a></li>
+                        <li><a href="privacy.html" class="text-nl-slate hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-nl-slate hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 text-center">
+                <p class="text-nl-slate/60 text-xs mt-2"><strong>Registered company address:</strong><br>newlens limited, 2 Burghley Way, Littleover, Derby, DE23 4TD</p>
+                <p class="text-nl-slate text-[10px] uppercase tracking-widest font-bold mt-4">© 2026 newlens. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
