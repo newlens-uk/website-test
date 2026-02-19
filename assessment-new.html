@@ -113,7 +113,7 @@
             </div>
             <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">AI Readiness Audit</h1>
             <p class="text-xl text-nl-slate max-w-2xl mx-auto leading-relaxed mb-6">
-                Establish your organizational maturity, identify strategic security gaps, and benchmark your readiness for AI transformation. Move from curiosity to high-impact implementation.
+                Establish your organisational maturity, identify your key gaps, and receive a strategic roadmap tailored to your business. Move from curiosity to confident, high-impact action.
             </p>
             <div class="max-w-2xl mx-auto">
                 <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-nl-green/30">
@@ -560,7 +560,7 @@
             // Special handling for Q4: show Q4b if answer is "yes"
             if (currentStep === 5) {
                 const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
-                if (q4Answer && q4Answer.value === 'yes' || q4Answer.value === 'working-on-it') {
+                if (q4Answer && q4Answer.value === 'yes') {
                     // Show Q4b
                     document.getElementById('step5b').style.display = 'block';
                     document.getElementById('step5b').classList.add('active');
@@ -605,7 +605,7 @@
                 // Special handling when going back to step 5 from step 6
                 if (currentStep === 5) {
                     const q4Answer = document.querySelector('input[name="q4_policy"]:checked');
-                    if (q4Answer && q4Answer.value === 'yes' || q4Answer.value === 'working-on-it') {
+                    if (q4Answer && q4Answer.value === 'yes') {
                         // Show Q4b instead of step 5
                         document.getElementById('step5b').style.display = 'block';
                         document.getElementById('step5b').classList.add('active');
