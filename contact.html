@@ -29,8 +29,7 @@
     <style>
         html { scroll-behavior: smooth; }
         .form-group {
-            position: relative;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         .form-input, .form-textarea, .form-select {
             @apply w-full px-5 py-4 rounded-xl border-2 border-slate-200 outline-none transition-all bg-white text-slate-900;
@@ -39,13 +38,10 @@
             @apply border-nl-teal ring-4 ring-nl-teal/10 shadow-sm;
         }
         .form-label {
-            @apply block text-sm font-bold text-nl-navy mb-2 ml-1;
+            @apply block text-sm font-bold text-nl-navy mb-3 ml-1;
         }
         .required-star {
             @apply text-red-500 ml-0.5;
-        }
-        .error-message {
-            @apply text-red-500 text-[10px] font-bold uppercase tracking-wider mt-1 ml-1 hidden;
         }
         .spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
@@ -63,7 +59,7 @@
 <body class="bg-slate-50 text-slate-800 font-sans">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-nl-navy/95 backdrop-blur-md border-b border-white/5 h-16 md:h-20 flex items-center">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-nl-navy/95 backdrop-blur-md border-b border-white/5 h-16 md:h-20 flex items-center">
         <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
             <a href="index.html" class="text-xl md:text-2xl font-black tracking-tighter text-white">new<span class="text-nl-green">lens</span></a>
             <a href="index.html" class="text-sm font-bold text-nl-slate hover:text-white transition-colors uppercase tracking-widest">← Back to Home</a>
@@ -82,24 +78,22 @@
 
     <!-- Form Section -->
     <section class="py-16 md:py-24">
-        <div class="max-w-2xl mx-auto px-6">
-            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-slate-100">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-16 border border-slate-100">
                 
-                <form id="contactForm" class="space-y-6">
+                <form id="contactForm">
                     
-                    <!-- Name -->
-                    <div class="form-group">
-                        <label for="name" class="form-label">Full Name <span class="required-star">*</span></label>
-                        <input type="text" id="name" name="name" required class="form-input" placeholder="e.g. John Smith">
-                        <span class="error-message" id="nameError">Required</span>
-                    </div>
+                    <div class="grid md:grid-cols-2 gap-x-8">
+                        <!-- Name -->
+                        <div class="form-group md:col-span-2">
+                            <label for="name" class="form-label">Full Name <span class="required-star">*</span></label>
+                            <input type="text" id="name" name="name" required class="form-input" placeholder="e.g. John Smith">
+                        </div>
 
-                    <div class="grid md:grid-cols-2 gap-6">
                         <!-- Email -->
                         <div class="form-group">
                             <label for="email" class="form-label">Work Email <span class="required-star">*</span></label>
                             <input type="email" id="email" name="email" required class="form-input" placeholder="john@company.com">
-                            <span class="error-message" id="emailError">Required</span>
                         </div>
 
                         <!-- Phone -->
@@ -107,80 +101,76 @@
                             <label for="phone" class="form-label">Phone (Optional)</label>
                             <input type="tel" id="phone" name="phone" class="form-input" placeholder="+44 ...">
                         </div>
-                    </div>
 
-                    <!-- Company -->
-                    <div class="form-group">
-                        <label for="company" class="form-label">Company Name (Optional)</label>
-                        <input type="text" id="company" name="company" class="form-input" placeholder="Your Business Ltd">
-                    </div>
+                        <!-- Company -->
+                        <div class="form-group md:col-span-2">
+                            <label for="company" class="form-label">Company Name <span class="required-star">*</span></label>
+                            <input type="text" id="company" name="company" required class="form-input" placeholder="Your Business Ltd">
+                        </div>
 
-                    <!-- Enquiry Type -->
-                    <div class="form-group">
-                        <label for="enquiry_type" class="form-label">How can we help? <span class="required-star">*</span></label>
-                        <select id="enquiry_type" name="enquiry_type" required class="form-select">
-                            <option value="">Select an option...</option>
-                            <option value="general">General Enquiry</option>
-                            <option value="consulting">Consulting</option>
-                            <option value="training">Training</option>
-                            <option value="both">Consulting & Training</option>
-                            <option value="assessment">Assessment Booking</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <span class="error-message" id="enquiryError">Required</span>
-                    </div>
-
-                    <!-- Consulting-specific fields (hidden by default) -->
-                    <div id="consultingFields" class="hidden space-y-6">
-                        <div class="form-group">
-                            <label for="consulting_interest" class="form-label">Consulting Interest</label>
-                            <select id="consulting_interest" name="consulting_interest" class="form-select">
-                                <option value="">Select a focus area...</option>
-                                <option value="systems">Systems Architecture</option>
-                                <option value="analytics">Analytics & Reporting</option>
-                                <option value="financial">Commercial & Financial</option>
-                                <option value="crm">CRM Strategy</option>
-                                <option value="ai">AI Roadmap & Policy</option>
-                                <option value="multiple">Multiple Areas</option>
+                        <!-- Enquiry Type -->
+                        <div class="form-group md:col-span-2">
+                            <label for="enquiry_type" class="form-label">How can we help? <span class="required-star">*</span></label>
+                            <select id="enquiry_type" name="enquiry_type" required class="form-select">
+                                <option value="">Select an option...</option>
+                                <option value="general">General Enquiry</option>
+                                <option value="consulting">Consulting</option>
+                                <option value="training">Training</option>
+                                <option value="both">Consulting & Training</option>
+                                <option value="assessment">Assessment Booking</option>
+                                <option value="other">Other</option>
                             </select>
                         </div>
-                    </div>
 
-                    <!-- Training-specific fields (hidden by default) -->
-                    <div id="trainingFields" class="hidden space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Consulting-specific fields (hidden by default) -->
+                        <div id="consultingFields" class="hidden md:col-span-2">
                             <div class="form-group">
-                                <label for="training_interest" class="form-label">Training Interest</label>
-                                <select id="training_interest" name="training_interest" class="form-select">
-                                    <option value="">Select...</option>
-                                    <option value="empowerment">AI Empowerment</option>
-                                    <option value="solutions">AI Solutions</option>
-                                    <option value="both">Both</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="attendees" class="form-label">Attendees</label>
-                                <select id="attendees" name="attendees" class="form-select">
-                                    <option value="">Select...</option>
-                                    <option value="1-5">1-5</option>
-                                    <option value="6-10">6-10</option>
-                                    <option value="11-20">11-20</option>
-                                    <option value="21+">21+</option>
+                                <label for="consulting_interest" class="form-label">Consulting Interest</label>
+                                <select id="consulting_interest" name="consulting_interest" class="form-select">
+                                    <option value="">Select a focus area...</option>
+                                    <option value="systems">Systems Architecture</option>
+                                    <option value="analytics">Analytics & Reporting</option>
+                                    <option value="financial">Commercial & Financial</option>
+                                    <option value="crm">CRM Strategy</option>
+                                    <option value="ai">AI Roadmap & Policy</option>
+                                    <option value="multiple">Multiple Areas</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Message -->
-                    <div class="form-group">
-                        <label for="message" class="form-label">Your Message <span class="required-star">*</span></label>
-                        <textarea id="message" name="message" required rows="5" class="form-textarea" placeholder="Briefly describe your enquiry..."></textarea>
-                        <span class="error-message" id="messageError">Required</span>
-                    </div>
+                        <!-- Training-specific fields (hidden by default) -->
+                        <div id="trainingFields" class="hidden md:col-span-2">
+                            <div class="grid md:grid-cols-2 gap-x-8">
+                                <div class="form-group">
+                                    <label for="training_interest" class="form-label">Training Interest</label>
+                                    <select id="training_interest" name="training_interest" class="form-select">
+                                        <option value="">Select...</option>
+                                        <option value="empowerment">AI Empowerment</option>
+                                        <option value="solutions">AI Solutions</option>
+                                        <option value="both">Both</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="attendees" class="form-label">Attendees</label>
+                                    <select id="attendees" name="attendees" class="form-select">
+                                        <option value="">Select...</option>
+                                        <option value="1-5">1-5</option>
+                                        <option value="6-10">6-10</option>
+                                        <option value="11-20">11-20</option>
+                                        <option value="21+">21+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="grid md:grid-cols-2 gap-6 items-end">
+                        <!-- Message -->
+                        <div class="form-group md:col-span-2">
+                            <label for="message" class="form-label">Your Message <span class="required-star">*</span></label>
+                            <textarea id="message" name="message" required rows="5" class="form-textarea" placeholder="Briefly describe your enquiry..."></textarea>
+                        </div>
+
                         <!-- Preferred Contact Method -->
-                        <div class="form-group">
+                        <div class="form-group md:col-span-2">
                             <label for="contact_method" class="form-label">Preferred Contact Method</label>
                             <select id="contact_method" name="contact_method" class="form-select">
                                 <option value="email">Email</option>
@@ -188,34 +178,32 @@
                                 <option value="video">Video Call</option>
                             </select>
                         </div>
-
-                        <!-- Submit Button -->
-                        <div class="form-group">
-                            <button type="submit" id="submitBtn" class="w-full bg-nl-green text-nl-navy h-[60px] rounded-xl font-black text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all shadow-lg flex items-center justify-center gap-3">
-                                <span id="submitText">Send Enquiry</span>
-                                <div id="submitSpinner" class="spinner hidden"></div>
-                            </button>
-                        </div>
-                    </div>
                     </div>
 
                     <!-- Privacy Notice -->
-                    <div class="bg-slate-50/80 rounded-2xl p-6 text-[11px] text-slate-500 leading-relaxed border border-slate-100 flex items-start gap-4">
+                    <div class="bg-slate-50/80 rounded-2xl p-6 text-[11px] text-slate-500 leading-relaxed border border-slate-100 flex items-start gap-4 mb-12">
                         <div class="w-8 h-8 rounded-full bg-nl-navy/5 flex-shrink-0 flex items-center justify-center text-nl-navy">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                         </div>
                         <div>
-                            <strong class="text-nl-navy uppercase tracking-widest block mb-1">UK GDPR COMPLIANT</strong>
                             Your information is secure and used only to respond to your enquiry. We do not share your data with third parties. 
                             See our <a href="privacy.html" class="text-nl-teal hover:underline font-bold">Privacy Policy</a>.
                         </div>
                     </div>
 
+                    <!-- Submit Button -->
+                    <div class="flex justify-center">
+                        <button type="submit" id="submitBtn" class="w-full md:w-auto md:min-w-[300px] bg-nl-green text-nl-navy h-[64px] px-12 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all shadow-lg flex items-center justify-center gap-3">
+                            <span id="submitText">Send Enquiry</span>
+                            <div id="submitSpinner" class="spinner hidden"></div>
+                        </button>
+                    </div>
+
                     <!-- Success/Error Messages -->
-                    <div id="successMessage" class="hidden bg-nl-green/10 border-2 border-nl-green text-nl-navy p-6 rounded-2xl text-sm font-bold text-center">
+                    <div id="successMessage" class="hidden mt-8 bg-nl-green/10 border-2 border-nl-green text-nl-navy p-6 rounded-2xl text-sm font-bold text-center">
                         ✓ Thank you! We'll be in touch within 24 hours.
                     </div>
-                    <div id="errorMessage" class="hidden bg-red-50 border-2 border-red-200 text-red-700 p-6 rounded-2xl text-sm font-bold text-center">
+                    <div id="errorMessage" class="hidden mt-8 bg-red-50 border-2 border-red-200 text-red-700 p-6 rounded-2xl text-sm font-bold text-center">
                         Something went wrong. Please email us directly at <a href="mailto:info@newlens.uk" class="underline">info@newlens.uk</a>
                     </div>
 
@@ -300,8 +288,7 @@
             const data = Object.fromEntries(formData.entries());
             
             try {
-                // TODO: Replace with actual n8n webhook URL
-                const response = await fetch('https://your-n8n-instance.com/webhook/contact', {
+                const response = await fetch('https://n8n.newlens.uk/webhook/contact', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -312,7 +299,6 @@
                 if (response.ok) {
                     successMsg.classList.remove('hidden');
                     this.reset();
-                    // Scroll to success message
                     successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
                     throw new Error('Submission failed');
@@ -321,36 +307,11 @@
                 console.error('Form submission error:', error);
                 errorMsg.classList.remove('hidden');
             } finally {
-                // Reset button state
                 submitBtn.disabled = false;
                 submitText.textContent = 'Send Enquiry';
                 submitSpinner.classList.add('hidden');
             }
         });
-
-        // Real-time validation
-        const requiredFields = ['name', 'email', 'message', 'enquiry_type'];
-        requiredFields.forEach(fieldId => {
-            const field = document.getElementById(fieldId);
-            if (field) {
-                field.addEventListener('blur', function() {
-                    validateField(this);
-                });
-            }
-        });
-
-        function validateField(field) {
-            const errorEl = document.getElementById(field.id + 'Error');
-            if (!field.value.trim()) {
-                field.classList.add('border-red-300');
-                if (errorEl) errorEl.classList.remove('hidden');
-                return false;
-            } else {
-                field.classList.remove('border-red-300');
-                if (errorEl) errorEl.classList.add('hidden');
-                return true;
-            }
-        }
     </script>
 
 </body>
