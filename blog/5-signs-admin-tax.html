@@ -123,6 +123,22 @@
             font-weight: 900;
             line-height: 1;
         }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link.active {
+            color: #38D98A !important;
+        }
+        #nav-indicator {
+            position: absolute;
+            bottom: -4px;
+            height: 2px;
+            background-color: #38D98A;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            will-change: width, left, opacity;
+        }
         .logo-text {
             font-size: 1.75rem;
             font-weight: 900;
@@ -136,15 +152,16 @@
         <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
             <a href="../index.html" class="logo-text tracking-tighter text-white">new<span class="text-nl-green">lens</span></a>
             <div class="hidden md:flex items-center gap-8 text-[12px] font-bold uppercase tracking-widest relative">
-                <a href="../index.html#home" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Home</a>
-                <a href="../index.html#solutions" class="text-nl-slate/60 hover:text-white transition-colors pb-1">What We Solve</a>
-                <a href="../index.html#how-we-work" class="text-nl-slate/60 hover:text-white transition-colors pb-1">How We Work</a>
+                <a href="../index.html#home" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">Home</a>
+                <a href="../index.html#solutions" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">What We Solve</a>
+                <a href="../index.html#how-we-work" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">How We Work</a>
                 <div class="h-4 w-px bg-nl-slate/30"></div>
-                <a href="../services.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Services</a>
-                <a href="../pricing.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Pricing</a>
-                <a href="../qanda.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Q&A</a>
-                <a href="index.html" class="text-nl-green transition-colors pb-1">Articles</a>
-                <a href="../about.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">About</a>
+                <a href="../services.html" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">Services</a>
+                <a href="../pricing.html" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">Pricing</a>
+                <a href="../qanda.html" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">Q&A</a>
+                <a href="index.html" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">Articles</a>
+                <a href="../about.html" class="nav-link text-nl-slate/60 hover:text-white transition-colors pb-1">About</a>
+                <div id="nav-indicator" class="opacity-0"></div>
             </div>
             <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -172,7 +189,7 @@
                 <a href="../services.html" class="text-nl-slate hover:text-nl-green transition-colors">Services</a>
                 <a href="../pricing.html" class="text-nl-slate hover:text-nl-green transition-colors">Pricing</a>
                 <a href="../qanda.html" class="text-nl-slate hover:text-nl-green transition-colors">Q&A</a>
-                <a href="index.html" class="text-nl-green transition-colors">Articles</a>
+                <a href="index.html" class="text-nl-slate hover:text-nl-green transition-colors">Articles</a>
                 <a href="../about.html" class="text-nl-slate hover:text-nl-green transition-colors">About</a>
             </div>
             <div class="mt-auto pt-12 border-t border-white/10 flex flex-col gap-6">
