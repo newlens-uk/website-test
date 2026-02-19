@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Suffolk SMEs Can Automate Invoice Processing Without Expensive Software | newlens</title>
+    <meta name="description" content="Practical guide to invoice automation for UK small businesses. Learn how to reduce processing time from 10 minutes to 30 seconds without buying enterprise software.">
+    <meta name="keywords" content="invoice automation UK, automate invoices small business, invoice processing automation, Suffolk business automation, accounts payable automation">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="How Suffolk SMEs Can Automate Invoice Processing Without Expensive Software">
+    <meta property="og:description" content="Practical guide to invoice automation for UK small businesses. Reduce processing time from 10 minutes to 30 seconds.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://newlens.uk/blog/invoice-automation-suffolk-smes.html">
+    
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "How Suffolk SMEs Can Automate Invoice Processing Without Expensive Software",
+      "author": {
+        "@type": "Person",
+        "name": "Matthew Keys",
+        "jobTitle": "Founder",
+        "affiliation": "newlens limited"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "newlens",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://newlens.uk/favicon.png"
+        }
+      },
+      "datePublished": "2026-02-19",
+      "dateModified": "2026-02-19",
+      "description": "Practical guide to invoice automation for UK small businesses. Learn how to reduce processing time from 10 minutes to 30 seconds without buying enterprise software."
+    }
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'nl-navy': '#050B15',
+                        'nl-teal': '#39C6D6',
+                        'nl-green': '#38D98A',
+                        'nl-slate': '#BFC9D1',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .article-content {
+            max-width: 720px;
+        }
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #050B15;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .article-content h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #050B15;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .article-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            color: #475569;
+        }
+        .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+        .article-content li {
+            margin-bottom: 0.75rem;
+            line-height: 1.7;
+            color: #475569;
+        }
+        .article-content strong {
+            color: #1E293B;
+            font-weight: 600;
+        }
+        .article-content a {
+            color: #39C6D6;
+            text-decoration: underline;
+        }
+        .article-content a:hover {
+            color: #2ba5b3;
+        }
+        .highlight-box {
+            background: #F0FDFA;
+            border-left: 4px solid #38D98A;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-nl-navy/95 backdrop-blur-md border-b border-white/5 h-16 md:h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="../index.html" class="logo-text tracking-tighter text-white">new<span class="text-nl-green">lens</span></a>
+            <div class="hidden md:flex items-center gap-8 text-[12px] font-bold uppercase tracking-widest relative">
+                <a href="../index.html#home" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Home</a>
+                <a href="../index.html#solutions" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Solutions</a>
+                <a href="../index.html#how-we-work" class="text-nl-slate/60 hover:text-white transition-colors pb-1">How We Work</a>
+                <div class="h-4 w-px bg-nl-slate/30"></div>
+                <a href="../services.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Services</a>
+                <a href="../pricing.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Pricing</a>
+                <a href="../qanda.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Q&A</a>
+                <a href="index.html" class="text-nl-green transition-colors pb-1">Articles</a>
+                <a href="../about.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">About</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6H7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-nl-navy transition-transform duration-300 translate-x-full md:hidden">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-12">
+                <a href="../index.html" class="logo-text tracking-tighter text-white mobile-nav-link">new<span class="text-nl-green">lens</span></a>
+                <button id="close-menu-button" class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-6 text-xl font-bold uppercase tracking-[0.2em]">
+                <a href="../index.html#home" class="mobile-nav-link text-nl-slate hover:text-nl-green transition-colors">Home</a>
+                <a href="../index.html#solutions" class="mobile-nav-link text-nl-slate hover:text-nl-green transition-colors">Solutions</a>
+                <a href="../index.html#how-we-work" class="mobile-nav-link text-nl-slate hover:text-nl-green transition-colors">How We Work</a>
+                <a href="../services.html" class="text-nl-slate hover:text-nl-green transition-colors">Services</a>
+                <a href="../pricing.html" class="text-nl-slate hover:text-nl-green transition-colors">Pricing</a>
+                <a href="../qanda.html" class="text-nl-slate hover:text-nl-green transition-colors">Q&A</a>
+                <a href="index.html" class="text-nl-green transition-colors">Articles</a>
+                <a href="../about.html" class="text-nl-slate hover:text-nl-green transition-colors">About</a>
+            </div>
+            <div class="mt-auto pt-12 border-t border-white/10 flex flex-col gap-6">
+                <a href="../assessment-new.html" class="bg-white text-nl-navy px-8 py-5 rounded-full text-center font-black uppercase tracking-widest text-sm">
+                    Free Assessment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article -->
+    <main class="max-w-4xl mx-auto px-6 py-16 mt-20">
+        
+        <!-- Breadcrumb -->
+        <nav class="text-sm text-slate-500 mb-8">
+            <a href="../index.html" class="hover:text-nl-teal">Home</a> / 
+            <a href="index.html" class="hover:text-nl-teal">Articles</a> / 
+            <span class="text-slate-700">Invoice Automation</span>
+        </nav>
+
+        <!-- Article Header -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-nl-green/10 text-nl-green px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Automation</span>
+                <span class="text-slate-500 text-sm">5 min read</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-black text-nl-navy mb-6 leading-tight">
+                How Suffolk SMEs Can Automate Invoice Processing Without Expensive Software
+            </h1>
+            <p class="text-xl text-slate-600 mb-6">
+                You don't need a £50,000 ERP system to stop manually typing invoices. Here's the practical path.
+            </p>
+            <div class="flex items-center gap-4 text-sm text-slate-600">
+                <span>By Matthew Keys</span>
+                <span>•</span>
+                <time datetime="2026-02-19">19 February 2026</time>
+            </div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="article-content">
+            
+            <p>
+                If you're running a small business in Suffolk—or anywhere in the UK—invoices arrive in your inbox. PDFs from suppliers, scanned documents, email attachments. Someone on your team downloads them, opens each one, reads the supplier name, invoice number, amount, and due date, then manually types this information into your accounting software.
+            </p>
+
+            <p>
+                This takes anywhere from 5 to 15 minutes per invoice depending on complexity. If you process 50 invoices a month, that's between 4 and 12 hours of pure data entry.
+            </p>
+
+            <p>
+                That time adds no value. It catches no fraud. It builds no relationships. It's just transcription.
+            </p>
+
+            <p>
+                Here's how to automate it without buying enterprise software or hiring a consultant.
+            </p>
+
+            <h2>Why Invoice Automation Matters for Small Businesses</h2>
+
+            <p>
+                The cost isn't just the time spent typing. It's the opportunity cost of what your team could be doing instead.
+            </p>
+
+            <p>
+                A finance assistant spending 10 hours a month on invoice data entry is not chasing late payments, reconciling accounts, or identifying cost savings. An office manager manually processing supplier invoices is not improving operations or building supplier relationships.
+            </p>
+
+            <p>
+                Automating invoice processing doesn't eliminate a job. It frees someone to do work that actually requires judgement.
+            </p>
+
+            <h2>What Invoice Automation Actually Does</h2>
+
+            <p>
+                Invoice automation extracts data from incoming invoices and feeds it directly into your accounting system. No human transcription required.
+            </p>
+
+            <p>
+                A typical automated workflow looks like this:
+            </p>
+
+            <ol>
+                <li>An invoice arrives by email (PDF or image attachment)</li>
+                <li>The automation system extracts key fields: supplier name, invoice number, date, line items, total amount, VAT</li>
+                <li>The extracted data is validated against your supplier database</li>
+                <li>If everything matches, the invoice is created automatically in your accounting software</li>
+                <li>If something looks unusual—wrong amount, unknown supplier—it's flagged for human review</li>
+            </ol>
+
+            <p>
+                Processing time drops from 10 minutes to 30 seconds. The human still reviews and approves, but they're not typing.
+            </p>
+
+            <h2>The Practical Route for UK SMEs</h2>
+
+            <p>
+                You don't need SAP, Oracle, or NetSuite. Those systems are built for businesses processing thousands of invoices a month with complex approval hierarchies.
+            </p>
+
+            <p>
+                For a Suffolk business processing 20 to 200 invoices a month, there's a simpler, cheaper route.
+            </p>
+
+            <h3>Option 1: Use Your Accounting Software's Built-In Tools</h3>
+
+            <p>
+                If you're using Xero, QuickBooks, or Sage, you already have basic invoice capture built in.
+            </p>
+
+            <ul>
+                <li><strong>Xero:</strong> Hubdoc (included with most plans) scans invoices and pushes data directly to Xero</li>
+                <li><strong>QuickBooks:</strong> Receipt Capture (included) extracts supplier invoices automatically</li>
+                <li><strong>Sage:</strong> AutoEntry (paid add-on, ~£10-20/month) integrates with Sage 50 and Sage Business Cloud</li>
+            </ul>
+
+            <p>
+                These tools work reasonably well if your invoices are clean PDFs with clear formatting. They struggle with scanned images, handwritten notes, or non-standard layouts.
+            </p>
+
+            <p>
+                <strong>Cost:</strong> £0-£20/month  
+                <strong>Best for:</strong> Businesses processing 20-100 invoices/month with standard suppliers
+            </p>
+
+            <h3>Option 2: Use a Dedicated OCR Tool with Email Integration</h3>
+
+            <p>
+                If your accounting software's built-in tool isn't accurate enough, you can use a specialist OCR (Optical Character Recognition) service to extract invoice data, then feed it into your accounting system.
+            </p>
+
+            <p>
+                <strong>Tools worth considering:</strong>
+            </p>
+
+            <ul>
+                <li><strong>Dext (formerly Receipt Bank):</strong> UK-based, integrates with Xero, QuickBooks, Sage. ~£30-60/month depending on volume.</li>
+                <li><strong>AutoEntry:</strong> Also UK-based, similar pricing and integrations.</li>
+                <li><strong>Docparser:</strong> More technical but very flexible. Allows you to define custom extraction rules. ~£20-50/month.</li>
+            </ul>
+
+            <p>
+                These services typically work via a dedicated email address. You forward invoices to it, the tool extracts the data, and pushes it to your accounting software automatically.
+            </p>
+
+            <p>
+                <strong>Cost:</strong> £20-£60/month  
+                <strong>Best for:</strong> Businesses processing 50-300 invoices/month or dealing with complex/inconsistent invoice formats
+            </p>
+
+            <h3>Option 3: Build a Custom Workflow (No Code Required)</h3>
+
+            <p>
+                If you want more control—or if you're processing invoices in non-standard ways—you can build a custom automation using tools like Make (formerly Integromat), Zapier, or n8n.
+            </p>
+
+            <p>
+                A typical workflow might look like:
+            </p>
+
+            <ol>
+                <li>Invoice arrives at invoices@yourbusiness.co.uk</li>
+                <li>Automation tool monitors that inbox</li>
+                <li>When a new email with a PDF attachment arrives, extract the PDF</li>
+                <li>Send the PDF to an OCR service (e.g., Google Document AI, Mindee, or Nanonets)</li>
+                <li>Extract supplier name, invoice number, amount, date</li>
+                <li>Check supplier name against your approved supplier list</li>
+                <li>If match: create draft invoice in Xero/QuickBooks</li>
+                <li>If no match: send alert to finance team</li>
+            </ol>
+
+            <p>
+                This sounds complex, but with no-code tools it's achievable. The setup takes a few hours. Once running, it's completely hands-off.
+            </p>
+
+            <p>
+                <strong>Cost:</strong> £10-£30/month (automation platform) + £10-£50/month (OCR API)  
+                <strong>Best for:</strong> Businesses with specific requirements or existing automation infrastructure
+            </p>
+
+            <h2>What to Watch For: Common Pitfalls</h2>
+
+            <p>
+                Invoice automation is one of the most reliable automation use cases, but there are still gotchas.
+            </p>
+
+            <h3>1. OCR Accuracy Varies</h3>
+
+            <p>
+                If your suppliers send clean, text-based PDFs, accuracy will be 95%+ out of the box. If you're receiving scanned images, handwritten invoices, or badly formatted documents, accuracy drops.
+            </p>
+
+            <p>
+                <strong>Fix:</strong> Ask your top 10 suppliers to send proper invoices (not scans). This alone will solve most accuracy problems.
+            </p>
+
+            <h3>2. Exception Handling Matters</h3>
+
+            <p>
+                Automation should handle the 80% of invoices that are straightforward. The other 20%—duplicates, disputes, non-standard formats—need human review.
+            </p>
+
+            <p>
+                Make sure your workflow includes a clear escalation path. If the system can't process an invoice confidently, it should flag it for manual review, not guess.
+            </p>
+
+            <h3>3. Integration is Key</h3>
+
+            <p>
+                The value of invoice automation comes from data flowing directly into your accounting software. If you're still copying and pasting extracted data, you haven't actually automated anything.
+            </p>
+
+            <p>
+                Choose tools that integrate natively with whatever accounting software you use. Check the integration before committing to a tool.
+            </p>
+
+            <h2>ROI: What Does This Actually Save?</h2>
+
+            <p>
+                Let's work through a realistic example for a Suffolk business:
+            </p>
+
+            <div class="highlight-box">
+                <p class="text-nl-navy font-semibold mb-2">Example: 25-Person Professional Services Firm</p>
+                <p class="text-slate-700 mb-0">
+                    <strong>Current state:</strong> 80 supplier invoices per month, 8 minutes each = 10.6 hours/month<br>
+                    <strong>Cost of manual processing:</strong> £15/hour (finance assistant time) = £159/month<br>
+                    <strong>Automation cost:</strong> Dext or AutoEntry = ~£40/month<br>
+                    <strong>Time saved:</strong> ~9 hours/month (automation processes 90% of invoices automatically)<br>
+                    <strong>Net saving:</strong> £119/month or £1,428/year<br>
+                    <strong>Plus:</strong> Finance assistant can focus on payment terms, supplier negotiations, and cash flow forecasting
+                </p>
+            </div>
+
+            <p>
+                The time saving is real. The cost saving is modest. The real value is freeing your team to do higher-value work.
+            </p>
+
+            <h2>How to Get Started</h2>
+
+            <p>
+                If you're convinced invoice automation is worth pursuing, here's the simplest path forward:
+            </p>
+
+            <h3>Step 1: Check What You Already Have</h3>
+
+            <p>
+                Log into your accounting software. Check if invoice capture is already included. If you're on Xero, Hubdoc is probably already enabled. Try it for a week before looking elsewhere.
+            </p>
+
+            <h3>Step 2: Pick One Supplier to Test</h3>
+
+            <p>
+                Don't automate everything at once. Pick your highest-volume supplier. Set up automation for their invoices only. Learn what works. Then expand.
+            </p>
+
+            <h3>Step 3: Measure Before and After</h3>
+
+            <p>
+                Time how long it currently takes to process an invoice from that supplier. Note accuracy issues (wrong amounts, missed invoices, duplicates). After a month of automation, measure again. If it's faster and more accurate, roll it out to more suppliers.
+            </p>
+
+            <h3>Step 4: Train Your Team</h3>
+
+            <p>
+                Automation doesn't eliminate the need for human oversight. Your finance team still needs to review flagged invoices, handle exceptions, and approve payments. Make sure they understand the new workflow and know how to handle edge cases.
+            </p>
+
+            <h2>When Automation Isn't the Answer</h2>
+
+            <p>
+                Invoice automation works well when you have:
+            </p>
+
+            <ul>
+                <li>Regular suppliers sending consistent invoices</li>
+                <li>A clear approval process</li>
+                <li>Standard payment terms</li>
+            </ul>
+
+            <p>
+                It works less well when:
+            </p>
+
+            <ul>
+                <li>Every invoice is from a different supplier (e.g., project-based work with one-off contractors)</li>
+                <li>Invoices require complex approval chains (three levels of sign-off, split across departments)</li>
+                <li>Your current process is so broken that automation would just speed up bad practices</li>
+            </ul>
+
+            <p>
+                If you're in the second category, fix the process first. Automate second.
+            </p>
+
+            <h2>Final Thought: Start Small, Prove Value, Expand</h2>
+
+            <p>
+                Invoice automation is one of the lowest-risk, highest-return automation projects an SME can undertake. It's well-understood, reliable, and the tools are mature.
+            </p>
+
+            <p>
+                You don't need a big budget. You don't need a consultant. You need a few hours, one of the tools listed above, and the willingness to iterate.
+            </p>
+
+            <p>
+                Start with one supplier. Prove it works. Then expand. Within three months you'll wonder why you ever typed invoices manually.
+            </p>
+
+            <div class="bg-gradient-to-r from-nl-teal to-nl-green text-white p-8 rounded-2xl my-12 text-center">
+                <h3 class="text-2xl font-bold mb-4">Need Help Automating Your Invoice Processing?</h3>
+                <p class="text-white mb-6 text-lg">
+                    We build custom invoice automation workflows for UK SMEs. No expensive software required.
+                </p>
+                <a href="../services.html#automation" class="inline-block bg-white text-nl-navy px-10 py-5 rounded-xl font-bold text-base uppercase tracking-widest hover:bg-nl-navy hover:text-white transition-all shadow-lg">
+                    See Our Services →
+                </a>
+            </div>
+
+            <h3>Related Reading</h3>
+
+            <ul>
+                <li><a href="5-signs-admin-tax.html">5 Signs Your SME is Losing Productivity to the Admin Tax</a></li>
+                <li><a href="shadow-ai-risk-uk-smes.html">What is Shadow AI? Why UK SMEs Need an AI Usage Policy</a></li>
+                <li><a href="../assessment-new.html">AI Readiness Assessment</a> - Find automation opportunities in your business</li>
+            </ul>
+
+        </article>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-nl-navy text-white py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-2xl font-black text-white mb-6 tracking-tighter">new<span class="text-nl-green">lens</span></div>
+                    <p class="text-nl-slate text-sm leading-relaxed mb-6">Enterprise-grade automation and data clarity for UK SMEs. Based in Suffolk.</p>
+                    <p class="text-nl-teal text-xs font-bold">Co No. 16945634 | ICO: TBC</p>
+                    <p class="text-nl-slate text-xs opacity-60 italic mt-1">Registered in England & Wales</p>
+                    <p class="text-nl-slate text-xs mt-2 leading-relaxed"><strong>Registered company address:</strong><br>newlens limited<br>2 Burghley Way, Littleover<br>Derby, DE23 4TD</p>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Platform</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="../assessment-new.html" class="text-nl-slate hover:text-white transition-colors">AI Readiness Assessment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="../about.html" class="text-nl-slate hover:text-white transition-colors">About</a></li>
+                        <li><a href="../services.html" class="text-nl-slate hover:text-white transition-colors">Services</a></li>
+                        <li><a href="index.html" class="text-nl-slate hover:text-white transition-colors">Articles</a></li>
+                        <li><a href="../qanda.html" class="text-nl-slate hover:text-white transition-colors">Q&A</a></li>
+                        <li><a href="../contact.html" class="text-nl-slate hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Connect</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="mailto:info@newlens.uk" class="text-nl-slate hover:text-white transition-colors">info@newlens.uk</a></li>
+                        <li><a href="https://www.linkedin.com/company/newlens-uk" target="_blank" class="text-nl-slate hover:text-white transition-colors">LinkedIn</a></li>
+                        <li><a href="../privacy.html" class="text-nl-slate hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-nl-slate hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-nl-slate text-[10px] uppercase tracking-widest font-bold">© 2026 newlens. All Rights Reserved.</p>
+                <p class="text-nl-slate/40 text-xs">Powered by newlens</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        closeMenuButton.addEventListener('click', toggleMenu);
+        mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
+
+</body>
+</html>
