@@ -38,7 +38,7 @@
         .form-label {
             width: 220px;
             flex-shrink: 0;
-            @apply text-sm font-bold text-nl-navy;
+            @apply text-sm font-medium text-nl-navy;
         }
         .form-input, .form-select {
             flex-grow: 1;
@@ -52,7 +52,7 @@
             @apply border-nl-teal ring-4 ring-nl-teal/5;
         }
         .required-star {
-            @apply text-red-500 ml-0.5;
+            @apply text-red-500 ml-1 font-bold;
         }
         .spinner {
             border: 3px solid rgba(255, 255, 255, 0.3);
@@ -174,7 +174,7 @@
 
                         <!-- Message -->
                         <div class="mt-12 mb-4">
-                            <label for="message" class="block text-sm font-bold text-nl-navy mb-4">Message <span class="required-star">*</span></label>
+                            <label for="message" class="block text-sm font-medium text-nl-navy mb-4">Message <span class="required-star">*</span></label>
                             <textarea id="message" name="message" required rows="8" class="form-textarea" placeholder="Briefly describe your enquiry..."></textarea>
                         </div>
 
