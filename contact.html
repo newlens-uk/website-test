@@ -39,7 +39,7 @@
             @apply border-nl-teal ring-4 ring-nl-teal/10 shadow-sm;
         }
         .form-label {
-            @apply block text-xs font-bold text-nl-navy mb-2 uppercase tracking-wider ml-1;
+            @apply block text-sm font-bold text-nl-navy mb-2 ml-1;
         }
         .required-star {
             @apply text-red-500 ml-0.5;
@@ -200,9 +200,15 @@
                     </div>
 
                     <!-- Privacy Notice -->
-                    <div class="bg-slate-50/50 rounded-2xl p-5 text-[10px] text-slate-500 leading-relaxed border border-slate-100">
-                        <strong class="text-nl-navy uppercase tracking-widest mr-1">Privacy:</strong> Your information is secure and used only to respond to your enquiry. 
-                        See our <a href="privacy.html" class="text-nl-teal hover:underline font-bold">Privacy Policy</a>. UK GDPR compliant.
+                    <div class="bg-slate-50/80 rounded-2xl p-6 text-[11px] text-slate-500 leading-relaxed border border-slate-100 flex items-start gap-4">
+                        <div class="w-8 h-8 rounded-full bg-nl-navy/5 flex-shrink-0 flex items-center justify-center text-nl-navy">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        </div>
+                        <div>
+                            <strong class="text-nl-navy uppercase tracking-widest block mb-1">UK GDPR COMPLIANT</strong>
+                            Your information is secure and used only to respond to your enquiry. We do not share your data with third parties. 
+                            See our <a href="privacy.html" class="text-nl-teal hover:underline font-bold">Privacy Policy</a>.
+                        </div>
                     </div>
 
                     <!-- Success/Error Messages -->
