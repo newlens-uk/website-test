@@ -117,28 +117,70 @@
             margin: 2rem 0;
             border-radius: 8px;
         }
+        .logo-text {
+            font-size: 1.75rem;
+            font-weight: 900;
+        }
     </style>
 </head>
 <body class="bg-slate-50">
 
-    <!-- Header -->
-    <header class="bg-nl-navy py-6 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            <a href="../index.html" class="text-2xl font-black text-white tracking-tighter">new<span class="text-nl-green">lens</span></a>
-            <nav class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-nl-slate">
-                <a href="../index.html" class="hover:text-white transition">Home</a>
-                <a href="../services.html" class="hover:text-white transition">Services</a>
-                <a href="../pricing.html" class="hover:text-white transition">Pricing</a>
-                <a href="../qanda.html" class="hover:text-white transition">Q&A</a>
-                <a href="index.html" class="text-nl-green">Articles</a>
-                <a href="../about.html" class="hover:text-white transition">About</a>
-            </nav>
-            <a href="index.html" class="md:hidden text-sm font-bold text-nl-green">Articles</a>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-nl-navy/95 backdrop-blur-md border-b border-white/5 h-16 md:h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <a href="../index.html" class="logo-text tracking-tighter text-white">new<span class="text-nl-green">lens</span></a>
+            <div class="hidden md:flex items-center gap-8 text-[12px] font-bold uppercase tracking-widest relative">
+                <a href="../index.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Home</a>
+                <div class="h-4 w-px bg-nl-slate/30"></div>
+                <a href="../services.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Services</a>
+                <a href="../pricing.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Pricing</a>
+                <a href="../qanda.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">Q&A</a>
+                <a href="index.html" class="text-nl-green transition-colors pb-1">Articles</a>
+                <a href="../about.html" class="text-nl-slate/60 hover:text-white transition-colors pb-1">About</a>
+                <a href="https://portal.newlens.uk/" target="_blank" rel="noopener noreferrer" class="bg-nl-green text-nl-navy px-6 py-3 rounded-full hover:bg-white transition-all font-bold uppercase text-[10px]">
+                    newlens Portal
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6H7" />
+                </svg>
+            </button>
         </div>
-    </header>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[60] bg-nl-navy transition-transform duration-300 translate-x-full md:hidden">
+        <div class="flex flex-col h-full p-8">
+            <div class="flex justify-between items-center mb-12">
+                <a href="../index.html" class="logo-text tracking-tighter text-white mobile-nav-link">new<span class="text-nl-green">lens</span></a>
+                <button id="close-menu-button" class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col gap-6 text-xl font-bold uppercase tracking-[0.2em]">
+                <a href="../index.html" class="mobile-nav-link text-nl-slate hover:text-nl-green transition-colors">Home</a>
+                <a href="../services.html" class="text-nl-slate hover:text-nl-green transition-colors">Services</a>
+                <a href="../pricing.html" class="text-nl-slate hover:text-nl-green transition-colors">Pricing</a>
+                <a href="../qanda.html" class="text-nl-slate hover:text-nl-green transition-colors">Q&A</a>
+                <a href="index.html" class="text-nl-green transition-colors">Articles</a>
+                <a href="../about.html" class="text-nl-slate hover:text-nl-green transition-colors">About</a>
+            </div>
+            <div class="mt-auto pt-12 border-t border-white/10 flex flex-col gap-6">
+                <a href="https://portal.newlens.uk/" target="_blank" rel="noopener noreferrer" class="bg-nl-green text-nl-navy px-8 py-5 rounded-full text-center font-black uppercase tracking-widest text-sm">
+                    newlens Portal
+                </a>
+                <a href="../assessment-new.html" class="bg-white text-nl-navy px-8 py-5 rounded-full text-center font-black uppercase tracking-widest text-sm">
+                    Free Assessment
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Article -->
-    <main class="max-w-4xl mx-auto px-6 py-16">
+    <main class="max-w-4xl mx-auto px-6 py-16 mt-20">
         
         <!-- Breadcrumb -->
         <nav class="text-sm text-slate-500 mb-8">
@@ -520,15 +562,67 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-nl-navy text-white py-12 mt-16">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <a href="../index.html" class="text-2xl font-black tracking-tighter inline-block mb-4">new<span class="text-nl-green">lens</span></a>
-            <p class="text-nl-slate/60 text-sm">© 2026 newlens. Co No. 16945634 | ICO: TBC</p>
-            <p class="text-nl-slate/60 text-xs mt-2"><strong>Registered company address:</strong> newlens limited, 2 Burghley Way, Littleover, Derby, DE23 4TD</p>
-            <p class="text-nl-slate/60 text-xs">Registered in England & Wales</p>
-            <p class="text-nl-slate/60 text-xs mt-2"><a href="../privacy.html" class="hover:text-nl-teal underline">Privacy</a> | <a href="../terms.html" class="hover:text-nl-teal underline">Terms</a></p>
+    <footer class="bg-nl-navy text-white py-20 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-2 md:col-span-1">
+                    <div class="text-2xl font-black text-white mb-6 tracking-tighter">new<span class="text-nl-green">lens</span></div>
+                    <p class="text-nl-slate text-sm leading-relaxed mb-6">Enterprise-grade automation and data clarity for UK SMEs. Based in Suffolk.</p>
+                    <p class="text-nl-teal text-xs font-bold">Co No. 16945634 | ICO: TBC</p>
+                    <p class="text-nl-slate text-xs opacity-60 italic mt-1">Registered in England & Wales</p>
+                    <p class="text-nl-slate text-xs mt-2 leading-relaxed"><strong>Registered company address:</strong><br>newlens limited<br>2 Burghley Way, Littleover<br>Derby, DE23 4TD</p>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Platform</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="https://portal.newlens.uk/" class="text-nl-slate hover:text-white transition-colors">newlens Portal</a></li>
+                        <li><a href="../pricing.html" class="text-nl-slate hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="../assessment-new.html" class="text-nl-slate hover:text-white transition-colors">AI Readiness Assessment</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Company</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="../about.html" class="text-nl-slate hover:text-white transition-colors">About</a></li>
+                        <li><a href="../services.html" class="text-nl-slate hover:text-white transition-colors">Services</a></li>
+                        <li><a href="index.html" class="text-nl-slate hover:text-white transition-colors">Articles</a></li>
+                        <li><a href="../qanda.html" class="text-nl-slate hover:text-white transition-colors">Q&A</a></li>
+                        <li><a href="../contact.html" class="text-nl-slate hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-black uppercase tracking-widest text-xs mb-6">Connect</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li><a href="mailto:info@newlens.uk" class="text-nl-slate hover:text-white transition-colors">info@newlens.uk</a></li>
+                        <li><a href="https://www.linkedin.com/company/newlens-uk" target="_blank" class="text-nl-slate hover:text-white transition-colors">LinkedIn</a></li>
+                        <li><a href="../privacy.html" class="text-nl-slate hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="../terms.html" class="text-nl-slate hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-nl-slate text-[10px] uppercase tracking-widest font-bold">© 2026 newlens. All Rights Reserved.</p>
+                <p class="text-nl-slate/40 text-xs">Powered by newlens</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('translate-x-full');
+            document.body.style.overflow = mobileMenu.classList.contains('translate-x-full') ? '' : 'hidden';
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        closeMenuButton.addEventListener('click', toggleMenu);
+        mobileNavLinks.forEach(link => link.addEventListener('click', toggleMenu));
+    </script>
 
 </body>
 </html>
