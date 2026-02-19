@@ -32,15 +32,15 @@
             display: flex;
             align-items: center;
             margin-bottom: 1.5rem;
-            gap: 1.5rem;
+            gap: 2rem;
         }
         .form-label {
-            width: 180px;
+            width: 220px;
             flex-shrink: 0;
             @apply text-sm font-bold text-nl-navy;
         }
         .form-input, .form-select {
-            @apply flex-1 px-4 py-2.5 rounded-md border-2 border-slate-200 outline-none transition-all bg-white text-slate-900;
+            @apply flex-1 px-4 py-3 rounded-md border-2 border-slate-200 outline-none transition-all bg-white text-slate-900 w-full;
         }
         .form-textarea {
             @apply w-full px-4 py-3 rounded-md border-2 border-slate-200 outline-none transition-all bg-white text-slate-900;
@@ -91,7 +91,7 @@
                 
                 <form id="contactForm">
                     
-                    <div class="max-w-2xl mx-auto">
+                    <div class="w-full">
                         <!-- Full Name -->
                         <div class="form-row">
                             <label for="name" class="form-label">Full Name <span class="required-star">*</span></label>
@@ -170,13 +170,13 @@
                         </div>
 
                         <!-- Message -->
-                        <div class="mt-8 mb-4">
+                        <div class="mt-12 mb-4">
                             <label for="message" class="block text-sm font-bold text-nl-navy mb-4">Message <span class="required-star">*</span></label>
                             <textarea id="message" name="message" required rows="8" class="form-textarea" placeholder="Briefly describe your enquiry..."></textarea>
                         </div>
 
                         <!-- Preferred contact method -->
-                        <div class="form-row mt-8">
+                        <div class="form-row mt-12">
                             <label for="contact_method" class="form-label">Preferred contact method</label>
                             <select id="contact_method" name="contact_method" class="form-select">
                                 <option value="email">Email</option>
