@@ -64,6 +64,12 @@ for file in glob.glob('*.html'):
     # Remove marker lines if present
     content = content.replace('FOOTER_START\n', '')
     content = content.replace('TEST_LINE\n', '')
+    content = content.replace('FOOTER_START', '')
+    content = content.replace('TEST_LINE', '')
+    
+    # Remove large gaps before the footer (common in some pages)
+    content = content.replace('</section>\n\n\n\n</body>', '</section>\n</body>')
+    content = content.replace('</section>\n\n\n</body>', '</section>\n</body>')
     
     # Insert footer before </body>
     footer = footer_template.format(root='', article_class='')
