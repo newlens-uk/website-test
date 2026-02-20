@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Readiness Assessment | newlens</title>
@@ -136,7 +138,7 @@
 
             <div class="bg-white rounded-xl shadow-2xl p-8 md:p-16 border border-slate-100">
                 
-                <form id="assessmentForm" action="https://n8n.newlens.uk/webhook/assessment-submit" method="POST" class="w-full">
+                <form id="assessmentForm" action="https://n8n.newlens.uk/webhook/assessment-submit" method="POST" class="w-full" novalidate>
                     
                     <!-- Step 1: Contact Info -->
                     <div class="step active" id="step1">
@@ -144,9 +146,15 @@
                         <p class="text-slate-600 mb-12">Where should we send your strategic report?</p>
                         
                         <div class="max-w-2xl mx-auto">
-                            <div class="form-row">
-                                <label for="name" class="form-label">Full Name <span class="required-star">*</span></label>
-                                <input type="text" id="name" name="name" required class="form-input" placeholder="e.g. John Smith">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div class="form-row mb-0">
+                                    <label for="first_name" class="form-label">First Name <span class="required-star">*</span></label>
+                                    <input type="text" id="first_name" name="first_name" required class="form-input" placeholder="e.g. John">
+                                </div>
+                                <div class="form-row mb-0">
+                                    <label for="last_name" class="form-label">Last Name <span class="required-star">*</span></label>
+                                    <input type="text" id="last_name" name="last_name" required class="form-input" placeholder="e.g. Smith">
+                                </div>
                             </div>
                             <div class="form-row">
                                 <label for="email" class="form-label">Work Email <span class="required-star">*</span></label>
@@ -157,15 +165,8 @@
                                 <input type="text" id="company" name="company" required class="form-input" placeholder="Your Business Ltd">
                             </div>
                             <div class="form-row">
-                                <label for="role" class="form-label">Your Role <span class="required-star">*</span></label>
-                                <select id="role" name="role" required class="form-select">
-                                    <option value="">Select...</option>
-                                    <option value="owner">Owner/Founder</option>
-                                    <option value="director">Director/C-Level</option>
-                                    <option value="manager">Manager</option>
-                                    <option value="operations">Operations</option>
-                                    <option value="other">Other</option>
-                                </select>
+                                <label for="role" class="form-label">Job Title <span class="required-star">*</span></label>
+                                <input type="text" id="role" name="role" required class="form-input" placeholder="e.g. Managing Director">
                             </div>
 
                             <div class="flex justify-center mt-12">
@@ -417,7 +418,25 @@
                     </div>
 
                     <!-- Step 13: Admin Tax (Closing Hook) -->
+                    <!-- Step 13: Readiness -->
                     <div class="step" id="step13">
+                        <h2 class="text-3xl font-black text-nl-navy mb-8">How would you describe your team's AI Readiness?</h2>
+                        <div class="space-y-4">
+                            <label class="radio-card block"><input type="radio" name="q11_readiness" value="ready" class="sr-only" required>
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Ready - mindset and skills in place</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q11_readiness" value="developing" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Developing - interest and willingness present</p></div></label>
+                            <label class="radio-card block"><input type="radio" name="q11_readiness" value="early" class="sr-only">
+                                <div><p class="text-sm font-semibold text-nl-navy text-center">Early stages - capability needs development</p></div></label>
+                        </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-[2] bg-nl-green text-nl-navy h-[64px] rounded-xl font-black text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(56,217,138,0.4)] transition-all">Next Step →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 14: Spend -->
+                    <div class="step" id="step14">
                         <h2 class="text-3xl font-black text-nl-navy mb-3">One last question</h2>
                         <p class="text-slate-600 mb-12">Estimated monthly spend on manual administration/data processing?</p>
                         <div class="space-y-4">
@@ -432,14 +451,21 @@
                             <label class="radio-card block"><input type="radio" name="q12_admin_spend" value="unsure" class="sr-only">
                                 <div><p class="text-sm font-semibold text-nl-navy text-center">I'm unsure / Not tracked</p></div></label>
                         </div>
+                        <div class="flex gap-4 mt-12">
+                            <button type="button" onclick="prevStep()" class="flex-1 bg-slate-200 text-slate-700 h-[64px] rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-slate-300 transition-all">← Back</button>
+                            <button type="button" onclick="nextStep()" class="flex-[2] bg-nl-green text-nl-navy h-[64px] rounded-xl font-black text-sm uppercase tracking-widest hover:shadow-[0_0_30px_rgba(56,217,138,0.4)] transition-all">Final Step →</button>
+                        </div>
+                    </div>
 
-                        <div class="bg-nl-navy p-8 rounded-2xl text-white my-12">
+                    <!-- Step 15: Final Submission & Insight -->
+                    <div class="step" id="step15">
+                        <div class="bg-nl-navy p-8 rounded-2xl text-white mb-12">
                             <p class="text-xs font-bold uppercase tracking-widest text-nl-green mb-2">Strategic Insight</p>
                             <p class="text-sm leading-relaxed text-nl-slate">We use these insights to generate your Readiness Score and Risk Profile. Your roadmap is calculated from your answers across these assessment pillars.</p>
                         </div>
 
                         <!-- Consent Section -->
-                        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 my-12">
+                        <div class="bg-slate-50 border-2 border-slate-200 rounded-2xl p-6 mb-12">
                             <label class="flex items-start cursor-pointer">
                                 <input type="checkbox" name="consent_followup" value="yes" class="mt-1 mr-3 w-5 h-5 rounded border-slate-300 text-nl-teal focus:ring-nl-teal">
                                 <span class="text-sm text-slate-700 leading-relaxed">
@@ -506,7 +532,7 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 13;
+        const totalSteps = 15;
         
         document.getElementById('totalSteps').textContent = totalSteps;
 
@@ -634,6 +660,20 @@
             document.getElementById('currentStep').textContent = currentStep;
             document.getElementById('progressPercent').textContent = percent;
             document.getElementById('progressBar').style.width = `${percent}%`;
+
+            // Abandonment Tracking: Track progress at key milestones (Step 3, 7, 10)
+            if ([3, 7, 10].includes(currentStep)) {
+                const formData = new FormData(document.getElementById('assessmentForm'));
+                const data = Object.fromEntries(formData.entries());
+                data.tracking_type = 'abandonment_ping';
+                data.current_step = currentStep;
+                
+                fetch('https://n8n.newlens.uk/webhook/assessment-submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                }).catch(err => console.error('Tracking error:', err));
+            }
         }
 
         // Radio visual feedback
@@ -664,14 +704,19 @@
         });
 
         // Form Submission
-        document.getElementById('assessmentForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const submitBtn = this.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Processing Report...</span>';
-
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('assessmentForm');
+            if (form) {
+                form.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span>🚀 Preparing Report...</span>';
+                    
+                    try {
+                        console.log('Form submission started...');
+                        const formData = new FormData(this);
+                    const data = Object.fromEntries(formData.entries());
             
             // Handle checkboxes (collect all checked values for q6_data_issues)
             const dataIssues = [];
@@ -697,7 +742,7 @@
             data.timestamp = new Date().toISOString();
 
             try {
-                const response = await fetch('https://n8n.newlens.uk/webhook/assessment-submit', {
+                const response = await fetch('https://n8n.newlens.uk/webhook/assessment-production', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -708,11 +753,9 @@
                 document.getElementById(`step${totalSteps}`).classList.remove('active');
                 document.getElementById('progressContainer').classList.add('hidden');
                 document.getElementById('successMessage').classList.remove('hidden');
-                // Scroll to the form card to show success message
-                const formCard = document.querySelector('.bg-white.rounded-xl');
-                if (formCard) {
-                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                
+                // Ensure we scroll to the top of the success message
+                window.scrollTo({ top: document.querySelector('.bg-white.rounded-xl').offsetTop - 100, behavior: 'smooth' });
             } catch (error) {
                 console.error('Submission error:', error);
                 document.getElementById('submission-error').classList.remove('hidden');
@@ -720,6 +763,8 @@
                 submitBtn.innerHTML = 'Get My Report →';
             }
         });
+    }
+});
     </script>
 <!-- Cookie Consent Banner -->
 <!-- Include cookie-banner.html content inline for now -->
