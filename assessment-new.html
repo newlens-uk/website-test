@@ -52,12 +52,12 @@
             @apply border-nl-teal ring-4 ring-nl-teal/5 bg-white;
         }
         .radio-card, .checkbox-card {
-            @apply cursor-pointer border-2 border-slate-100 rounded-2xl p-6 transition-all bg-white hover:border-nl-teal/30 hover:bg-slate-50;
+            @apply cursor-pointer border-2 border-slate-200 rounded-2xl p-6 transition-all bg-white hover:border-nl-teal/50 hover:bg-slate-50;
         }
         .radio-card.selected, .checkbox-card.selected {
-            border: 4px solid #39C6D6 !important;
-            background-color: rgba(57, 198, 214, 0.15) !important;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 2px solid #39C6D6 !important;
+            background-color: rgba(57, 198, 214, 0.10) !important;
+            box-shadow: 0 0 0 2px #39C6D6, 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .sr-only {
             position: absolute;
@@ -389,13 +389,7 @@
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
                         </div>
                         <h2 class="text-4xl font-black text-nl-navy mb-4">Your Report is Being Generated</h2>
-                        <p class="text-xl text-slate-600 mb-8">You should receive it within a few minutes—keep an eye on your inbox.</p>
-                        <div class="max-w-2xl mx-auto mb-12 bg-slate-50 border-l-4 border-nl-green p-8 rounded-r-2xl italic text-left shadow-sm">
-                            <p class="text-lg text-nl-navy leading-relaxed mb-4">
-                                "Working with newlens has given us <span class="font-bold">real clarity direction & confidence</span> in how we build and scale our business... the value Mat brings is exceptional."
-                            </p>
-                            <p class="text-sm font-bold text-nl-teal uppercase tracking-widest">— Jason Goff, Founder @ JGTA</p>
-                        </div>
+                        <p class="text-xl text-slate-600 mb-12">You should receive it within a few minutes—keep an eye on your inbox.</p>
                         <div class="bg-nl-green/10 border-2 border-nl-green/30 rounded-2xl p-6 mb-6 max-w-2xl mx-auto">
                             <div class="flex items-start gap-3">
                                 <svg class="w-6 h-6 text-nl-green shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
@@ -407,6 +401,14 @@
                         </div>
                         <p class="text-sm text-slate-500 mb-8">Check your spam folder if you don't see it right away.</p>
                         <a href="index.html" class="inline-block bg-nl-navy text-white px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest">Back to Site</a>
+                        
+                        <!-- Testimonial Card -->
+                        <div class="hidden max-w-2xl mx-auto mt-12 bg-nl-navy rounded-2xl p-8 shadow-2xl" id="testimonialCard">
+                            <p class="text-xl text-white leading-relaxed mb-6 italic">
+                                "Working with <span class="text-nl-green font-bold">newlens</span> has given us <span class="text-nl-teal">real clarity direction & confidence</span> in how we build and scale our business... the value Mat brings is <span class="text-nl-green">exceptional</span>."
+                            </p>
+                            <p class="text-sm font-bold text-nl-green uppercase tracking-widest">— Jason Goff, Founder @ JGTA</p>
+                        </div>
                     </div>
 
                     <!-- Progress Bar -->
@@ -564,6 +566,7 @@
                         document.getElementById(`step${totalSteps}`).classList.remove('active');
                         document.getElementById('progressContainer').classList.add('hidden');
                         document.getElementById('successMessage').classList.remove('hidden');
+                        document.getElementById('testimonialCard').classList.remove('hidden');
                         window.scrollTo({ top: document.querySelector('.bg-white.rounded-xl').offsetTop - 100, behavior: 'smooth' });
                         
                         // Poll status endpoint
