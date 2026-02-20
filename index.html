@@ -527,21 +527,27 @@
         function handleScroll() {
             let current = '';
             
-            // Only track sections that have a corresponding nav link
-            const trackedIds = Array.from(navLinks).map(link => link.getAttribute('href').substring(1));
+            // Filter only for local anchor links starting with '#'
+            const anchorLinks = Array.from(navLinks).filter(link => link.getAttribute('href').startsWith('#'));
+            const trackedIds = anchorLinks.map(link => link.getAttribute('href').substring(1));
             
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionId = section.getAttribute('id');
+                // Only track IDs that are in our nav
                 if (trackedIds.includes(sectionId) && window.pageYOffset >= sectionTop - 150) {
                     current = sectionId;
                 }
             });
 
-            // Special case: If we're at the very bottom of the page, highlight the last link
-            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) {
+            // Special case: If we're at the very bottom of the page, force the last anchor link
+            const isAtBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 60;
+            if (isAtBottom) {
                 current = trackedIds[trackedIds.length - 1];
             }
+
+            // Fallback for very top
+            if (!current && trackedIds.length > 0) current = trackedIds[0];
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
