@@ -526,12 +526,22 @@
 
         function handleScroll() {
             let current = '';
+            
+            // Only track sections that have a corresponding nav link
+            const trackedIds = Array.from(navLinks).map(link => link.getAttribute('href').substring(1));
+            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.pageYOffset >= sectionTop - 150) {
-                    current = section.getAttribute('id');
+                const sectionId = section.getAttribute('id');
+                if (trackedIds.includes(sectionId) && window.pageYOffset >= sectionTop - 150) {
+                    current = sectionId;
                 }
             });
+
+            // Special case: If we're at the very bottom of the page, highlight the last link
+            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) {
+                current = trackedIds[trackedIds.length - 1];
+            }
 
             navLinks.forEach(link => {
                 link.classList.remove('active');
