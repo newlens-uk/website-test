@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Readiness Assessment | newlens</title>
     <meta name="description" content="Strategic AI readiness assessment for SMEs. Establish your maturity, identify risks, and calculate your 'Admin Tax'.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://n8n.newlens.uk;">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -549,7 +550,11 @@
                         if (q4bAnswer) data.q4b_policy_quality = q4bAnswer.value;
                         data.timestamp = new Date().toISOString();
                         const response = await fetch('https://n8n.newlens.uk/webhook/assessment-v2', {
-                            method: 'POST', headers: { 'Content-Type': 'application/json' },
+                            method: 'POST', 
+                            headers: { 
+                                'Content-Type': 'application/json',
+                                'X-Webhook-Secret': '49eb793ac8d341ab79834c7b08c9bfbfa64aa88b5a076825e5eb70b153e05196'
+                            },
                             body: JSON.stringify(data)
                         });
                         if (!response.ok) throw new Error('Submission failed');
