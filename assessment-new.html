@@ -52,12 +52,13 @@
             @apply border-nl-teal ring-4 ring-nl-teal/5 bg-white;
         }
         .radio-card, .checkbox-card {
-            @apply cursor-pointer border-2 border-slate-200 rounded-2xl p-6 transition-all bg-white hover:border-nl-teal/50 hover:bg-slate-50;
+            @apply cursor-pointer border-2 border-slate-200 rounded-2xl p-6 transition-all bg-white hover:border-nl-teal hover:bg-slate-50;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         }
         .radio-card.selected, .checkbox-card.selected {
-            border: 2px solid #39C6D6 !important;
-            background-color: rgba(57, 198, 214, 0.10) !important;
-            box-shadow: 0 0 0 2px #39C6D6, 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-color: #39C6D6 !important;
+            background-color: rgba(57, 198, 214, 0.08) !important;
+            box-shadow: 0 0 0 3px rgba(57, 198, 214, 0.3), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
         .sr-only {
             position: absolute;
@@ -403,11 +404,26 @@
                         <a href="index.html" class="inline-block bg-nl-navy text-white px-10 py-4 rounded-full font-bold text-sm uppercase tracking-widest">Back to Site</a>
                         
                         <!-- Testimonial Card -->
-                        <div class="hidden max-w-2xl mx-auto mt-12 bg-nl-navy rounded-2xl p-8 shadow-2xl" id="testimonialCard">
-                            <p class="text-xl text-white leading-relaxed mb-6 italic">
-                                "Working with <span class="text-nl-green font-bold">newlens</span> has given us <span class="text-nl-teal">real clarity direction & confidence</span> in how we build and scale our business... the value Mat brings is <span class="text-nl-green">exceptional</span>."
+                        <div class="hidden max-w-2xl mx-auto mt-12 bg-nl-navy rounded-[2rem] p-8 md:p-12 shadow-2xl border border-white/10 relative" id="testimonialCard">
+                            <div class="absolute -top-4 -left-4 w-12 h-12 bg-nl-green rounded-xl flex items-center justify-center rotate-3 shadow-lg">
+                                <svg class="w-6 h-6 text-nl-navy" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.13-1.564-.002.131-2.451 1.576-3.007 3.39-3.007V7.001c-1.814 0-3.13.146-4.103.882-1.57 1.164-2.031 3.522-2.103 5.476 0 .56.035 1.144.11 1.745.223 1.787.971 3.111 2.222 3.971.861.593 1.954.922 3.284.992l.003-4.303zm10.808 0c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.13-1.564-.002.131-2.451 1.576-3.007 3.39-3.007V7.001c-1.814 0-3.13.146-4.103.882-1.57 1.164-2.031 3.522-2.103 5.476 0 .56.035 1.144.11 1.745.223 1.787.971 3.111 2.222 3.971.861.593 1.954.922 3.284.992l.003-4.303z" />
+                                </svg>
+                            </div>
+                            <p class="text-lg md:text-xl text-white leading-relaxed mb-6 italic">
+                                "Working with <span class="text-nl-green font-bold">newlens</span> has given us <span class="text-nl-teal font-bold">real clarity direction & confidence</span> in how we build and scale our business... the value Mat brings is <span class="text-nl-green font-bold">exceptional</span>."
                             </p>
-                            <p class="text-sm font-bold text-nl-green uppercase tracking-widest">— Jason Goff, Founder @ JGTA</p>
+                            <div class="flex items-center gap-4 pt-6 border-t border-white/10">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-nl-teal to-nl-green p-0.5">
+                                    <div class="w-full h-full rounded-[0.65rem] bg-nl-navy flex items-center justify-center">
+                                        <span class="text-lg font-black text-white">JG</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-white font-bold">Jason Goff</p>
+                                    <p class="text-nl-teal text-xs font-bold uppercase tracking-widest">Founder, JGTA</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
